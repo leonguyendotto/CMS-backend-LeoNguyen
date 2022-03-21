@@ -62,23 +62,6 @@ include('admin/includes/functions.php');
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie at elementum eu facilisis sed odio morbi. Fringilla urna porttitor rhoncus dolor purus non enim. Posuere ac ut consequat semper viverra nam. Pulvinar sapien et ligula ullamcorper malesuada. Elementum integer enim neque volutpat ac tincidunt vitae. Mattis molestie a iaculis at erat pellentesque adipiscing commodo. At erat pellentesque adipiscing commodo elit at imperdiet dui accumsan. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Leo vel fringilla est ullamcorper eget nulla facilisi etiam dignissim.</p>
             <hr>
             <h4>What I Am Good At</h4>
-            <!-- Progress bars / Skills -->
-            <!-- <p>Project Management</p>
-            <div class="w3-green" >
-                <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:95%">95%</div>
-            </div>
-            <p>Web Developement</p>
-            <div class="w3-green">
-                <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:90%">90%</div>
-            </div>
-            <p>Adobe Suite</p>
-            <div class="w3-green">
-                <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:80%">80%</div>
-            </div>
-            <p>UX Design</p>
-            <div class="w3-green">
-                <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:85%">85%</div>
-            </div> -->
             <ul>
                 <?php
                 $query = 'SELECT *
@@ -92,44 +75,44 @@ include('admin/includes/functions.php');
                         <img src="<?php echo $record['logo']; ?>" width="50">
                             <?php echo $record['name']; ?>
                         <div class="confidence-container">
-                            <div class="confidence-bar" style="width:<?php echo $record['confidence']; ?>%;">
+                            <div class="confidence-bar" style="width:<?php echo $record['confidence']; ?>%; color:white">
                                 <?php echo $record['confidence']; ?>%
                             </div>
                         </div>
                     </li>
                 <?php endwhile; ?>
-            <ul>
+            </ul>
             <p>
                 <button class="w3-button w3-green w3-padding-large w3-margin-top w3-margin-bottom">
                     <i class="fa fa-download w3-margin-right"></i><a href="https://drive.google.com/file/d/1iSjP5oW_-lvWsfgVxQPSPhBs2ugdhxWW/view" target="_blank">Download Resume</a>
                 </button>
             </p>
-            <div>
-            <hr>
+    <!--EDUCATION-->  
+            <div>  
             <h4>Education</h4>
-            <ul>
-                <?php
-                $query = 'SELECT *
-                    FROM educations
-                    ORDER BY degree DESC';
-                $result = mysqli_query($connect, $query);
-                ?>
+                <ul>
+                    <?php
+                    $query = 'SELECT *
+                        FROM educations
+                        ORDER BY degree DESC';
+                    $result = mysqli_query($connect, $query);
+                    ?>
 
-                <?php while ($record = mysqli_fetch_assoc($result)) : ?>
-                    <li>
-                        <?php echo $record['degree']; ?>
-                        <div>
-                            <?php echo $record['date']; ?>
-                        </div>
-                        <div class="school">
-                            <?php echo $record['school']; ?>
-                        </div>
-                        <div class="honors">
-                            <?php echo $record['honors']; ?>
-                        </div>
-                    </li>
-                <?php endwhile; ?>
-            <ul>
+                    <?php while ($record = mysqli_fetch_assoc($result)) : ?>
+                        <li>
+                            <?php echo $record['degree']; ?>
+                            <div>
+                                <?php echo $record['date']; ?>
+                            </div>
+                            <div class="school">
+                                <?php echo $record['school']; ?>
+                            </div>
+                            <div class="honors">
+                                <?php echo $record['honors']; ?>
+                            </div>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
             </div>
         </div>
     <!-- First Photo Grid-->
@@ -151,27 +134,6 @@ include('admin/includes/functions.php');
                 </div>
             </div>
         <?php endwhile; ?>
-        <!-- <div class="w3-third w3-container w3-margin-bottom">
-            <img src="public/images/project1.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-            <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-        <div class="w3-third w3-container w3-margin-bottom">
-            <img src="public/images/project2.jpg" style="width:100%" class="w3-hover-opacity">
-            <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div>
-        <div class="w3-third w3-container">
-            <img src="public/images/project3.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-            <div class="w3-container w3-white">
-                <p><b>Lorem Ipsum</b></p>
-                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-            </div>
-        </div> -->
     </div>
     <!-- Pagination -->
     <div class="w3-center w3-padding-32">
