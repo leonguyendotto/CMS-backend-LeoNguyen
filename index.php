@@ -63,8 +63,8 @@ include('admin/includes/functions.php');
             <hr>
             <h4>What I Am Good At</h4>
             <!-- Progress bars / Skills -->
-            <p>Project Management</p>
-            <div class="w3-green">
+            <!-- <p>Project Management</p>
+            <div class="w3-green" >
                 <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:95%">95%</div>
             </div>
             <p>Web Developement</p>
@@ -78,7 +78,27 @@ include('admin/includes/functions.php');
             <p>UX Design</p>
             <div class="w3-green">
                 <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:85%">85%</div>
-            </div>
+            </div> -->
+            <ul>
+                <?php
+                $query = 'SELECT *
+                    FROM skills
+                    ORDER BY name DESC';
+                $result = mysqli_query($connect, $query);
+                ?>
+
+                <?php while ($record = mysqli_fetch_assoc($result)) : ?>
+                    <li>
+                        <img src="<?php echo $record['logo']; ?>" width="50">
+                            <?php echo $record['name']; ?>
+                        <div class="confidence-container">
+                            <div class="confidence-bar" style="width:<?php echo $record['confidence']; ?>%;">
+                                <?php echo $record['confidence']; ?>%
+                            </div>
+                        </div>
+                    </li>
+                <?php endwhile; ?>
+            <ul>
             <p>
                 <button class="w3-button w3-green w3-padding-large w3-margin-top w3-margin-bottom">
                     <i class="fa fa-download w3-margin-right"></i><a href="https://drive.google.com/file/d/1iSjP5oW_-lvWsfgVxQPSPhBs2ugdhxWW/view" target="_blank">Download Resume</a>

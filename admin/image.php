@@ -27,6 +27,21 @@ switch( $_GET['type'] )
     if( !$record['photo'] ) $record['photo'] = $camera;
     
     break;
+  
+    case 'skill':
+    
+      $query = 'SELECT logo 
+        FROM skills
+        WHERE id = '.$_GET['id'].'
+        LIMIT 1';
+      $result = mysqli_query( $connect, $query );
+      $record = mysqli_fetch_assoc( $result );
+  
+      if( !$record['logo'] ) $record['logo'] = $camera;
+
+      $record['photo'] = $record['logo'];
+      
+      break;
       
 }
 
