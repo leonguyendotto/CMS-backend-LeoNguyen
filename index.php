@@ -135,7 +135,23 @@ include('admin/includes/functions.php');
     <!-- First Photo Grid-->
     <h2>My Projects</h2>
     <div class="w3-row-padding" id="portfolio">
-        <div class="w3-third w3-container w3-margin-bottom">
+        <?php 
+        $query = 'SELECT *
+            FROM projects
+            ORDER BY title DESC';
+        $result = mysqli_query($connect, $query);
+        ?>
+
+        <?php while ($record = mysqli_fetch_assoc($result)) : ?>
+            <div class="w3-third w3-container w3-margin-bottom">
+                <img src="<?php echo $record['photo']; ?>" style="width:100%" class="w3-hover-opacity">
+                <div class="w3-container w3-white">
+                    <h5><?php echo $record['title'];?></h5>
+                    <?php echo $record['content']?>
+                </div>
+            </div>
+        <?php endwhile; ?>
+        <!-- <div class="w3-third w3-container w3-margin-bottom">
             <img src="public/images/project1.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
             <div class="w3-container w3-white">
                 <p><b>Lorem Ipsum</b></p>
@@ -155,7 +171,7 @@ include('admin/includes/functions.php');
                 <p><b>Lorem Ipsum</b></p>
                 <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- Pagination -->
     <div class="w3-center w3-padding-32">
@@ -185,8 +201,6 @@ include('admin/includes/functions.php');
                 <p>12345678</p>
             </div>
         </div>
-                    
- 
         <hr class="w3-opacity">
         <form action="insert.php" method="POST">
             <div class="w3-section">
