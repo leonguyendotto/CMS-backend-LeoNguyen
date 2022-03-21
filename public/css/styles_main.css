@@ -13,12 +13,20 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
-.confidence-container{
-    background-color: green;
+.confidence-container {
+    background-color: gray;
     height: 20px;
 }
 
 .confidence-bar {
     height: 100%;
-    background-color: gray;
+    background-color: green;
+}
+
+.school{
+    font-weight: bold;
+}
+
+.honors {
+    text-decoration: coral;
 }

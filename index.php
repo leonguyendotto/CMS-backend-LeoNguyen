@@ -13,7 +13,7 @@ include('admin/includes/functions.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href ="public/css/styles.css">
+    <link rel="stylesheet" href="public/css/styles_main.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="public/js/script.js"></script>
     <title>Personal Portfolio</title>
@@ -104,7 +104,33 @@ include('admin/includes/functions.php');
                     <i class="fa fa-download w3-margin-right"></i><a href="https://drive.google.com/file/d/1iSjP5oW_-lvWsfgVxQPSPhBs2ugdhxWW/view" target="_blank">Download Resume</a>
                 </button>
             </p>
+            <div>
             <hr>
+            <h4>Education</h4>
+            <ul>
+                <?php
+                $query = 'SELECT *
+                    FROM educations
+                    ORDER BY degree DESC';
+                $result = mysqli_query($connect, $query);
+                ?>
+
+                <?php while ($record = mysqli_fetch_assoc($result)) : ?>
+                    <li>
+                        <?php echo $record['degree']; ?>
+                        <div>
+                            <?php echo $record['date']; ?>
+                        </div>
+                        <div class="school">
+                            <?php echo $record['school']; ?>
+                        </div>
+                        <div class="honors">
+                            <?php echo $record['honors']; ?>
+                        </div>
+                    </li>
+                <?php endwhile; ?>
+            <ul>
+            </div>
         </div>
     <!-- First Photo Grid-->
     <h2>My Projects</h2>
@@ -159,21 +185,27 @@ include('admin/includes/functions.php');
                 <p>12345678</p>
             </div>
         </div>
+                    
+ 
         <hr class="w3-opacity">
-        <form action="#" method="post">
+        <form action="insert.php" method="POST">
             <div class="w3-section">
-                <label>Name</label>
-                <input class="w3-input w3-border" type="text" name="Name">
+                <label>First</label>
+                <input class="w3-input w3-border" type="text" name="first">
+            </div>
+            <div class="w3-section">
+                <label>Last</label>
+                <input class="w3-input w3-border" type="text" name="last">
             </div>
             <div class="w3-section">
                 <label>Email</label>
-                <input class="w3-input w3-border" type="text" name="Email">
+                <input class="w3-input w3-border" type="text" name="email">
             </div>
             <div class="w3-section">
                 <label>Message</label>
-                <input class="w3-input w3-border" type="text" name="Message">
+                <input class="w3-input w3-border" type="text" name="message">
             </div>
-            <button type="submit" class="w3-button w3-pink w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
+            <button type="submit" class="w3-button w3-pink w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right" value="submit"></i>Send Message</button>
         </form>
     </div>  
     <!-- Footer -->
